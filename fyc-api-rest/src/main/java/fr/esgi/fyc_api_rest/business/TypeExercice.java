@@ -12,10 +12,18 @@ public class TypeExercice {
     private String libelle;
     private int objectifDurre;
     private int objectifCalorique;
-    private int repetition;
+    private Integer repetition;
     @ManyToOne
     @JoinColumn(name = "categorie_exercice_id")
     private CategorieExercice categorie;
     @OneToMany(mappedBy = "typeExercice", cascade = CascadeType.ALL)
     private List<Exercice> exercices;
+
+    public TypeExercice(String libelle, int objectifDurre, int objectifCalorique, Integer repetition, CategorieExercice categorie) {
+        this.libelle = libelle;
+        this.objectifDurre = objectifDurre;
+        this.objectifCalorique = objectifCalorique;
+        this.repetition = repetition;
+        this.categorie = categorie;
+    }
 }

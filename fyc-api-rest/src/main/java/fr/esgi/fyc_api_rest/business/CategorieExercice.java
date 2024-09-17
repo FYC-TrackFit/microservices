@@ -12,4 +12,8 @@ public class CategorieExercice {
     private String libelle;
     @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
     private List<TypeExercice> typeExercices;
+
+    public CategorieExercice(String libelle) {
+        this.libelle = libelle;
+    }
 }
