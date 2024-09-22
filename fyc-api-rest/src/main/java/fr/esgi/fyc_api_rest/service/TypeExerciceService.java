@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface TypeExerciceService {
     List<TypeExercice> findAll();
-
     TypeExercice findById(Long id);
-
     TypeExercice create(TypeExercice typeExercice);
+    TypeExercice update(Long id, TypeExercice typeExercice);
+    void delete(Long id);
 }

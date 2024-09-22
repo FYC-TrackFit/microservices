@@ -2,6 +2,7 @@ package fr.esgi.fyc_api_rest.rest;
 
 import fr.esgi.fyc_api_rest.business.TypeExercice;
 import fr.esgi.fyc_api_rest.dto.typeExercice.in.TypeExerciceCreationDTO;
+import fr.esgi.fyc_api_rest.dto.typeExercice.in.TypeExerciceUpdateDTO;
 import fr.esgi.fyc_api_rest.mapper.TypeExerciceMapper;
 import fr.esgi.fyc_api_rest.service.TypeExerciceService;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,12 @@ public class TypeExerciceRestController {
         this.typeExerciceMapper = typeExerciceMapper;
     }
 
+    @PostMapping
+    @ResponseStatus(code = HttpStatus.CREATED)
+    public TypeExercice create(@RequestBody TypeExerciceCreationDTO typeExerciceCreationDTO){
+        return typeExerciceService.create(typeExerciceMapper.toEntity(typeExerciceCreationDTO));
+    }
+
     @GetMapping("")
     @ResponseStatus(code = HttpStatus.OK)
     public List<TypeExercice> findAll(){
@@ -32,9 +39,15 @@ public class TypeExerciceRestController {
         return typeExerciceService.findById(id);
     }
 
-    @PostMapping
-    @ResponseStatus(code = HttpStatus.CREATED)
-    public TypeExercice create(@RequestBody TypeExerciceCreationDTO typeExerciceCreationDTO){
-        return typeExerciceService.create(typeExerciceMapper.toEntity(typeExerciceCreationDTO));
+    @PutMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public TypeExercice update(@PathVariable Long id, @RequestBody TypeExerciceUpdateDTO typeExerciceUpdateDTO){
+        return typeExerciceService.update(id, typeExerciceMapper.toEntity(typeExerciceUpdateDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        typeExerciceService.delete(id);
     }
 }

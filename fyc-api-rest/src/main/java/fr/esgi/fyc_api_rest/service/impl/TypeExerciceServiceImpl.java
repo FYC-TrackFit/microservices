@@ -37,4 +37,22 @@ public class TypeExerciceServiceImpl implements TypeExerciceService {
     public TypeExercice create(TypeExercice typeExercice) {
         return typeExerciceRepository.save(typeExercice);
     }
+
+    @Override
+    public TypeExercice update(Long id, TypeExercice typeExercice) {
+        if(typeExerciceRepository.existsById(id) && typeExercice.getId().equals(id)){
+            return typeExerciceRepository.save(typeExercice);
+        }else{
+            throw new TypeExerciceNotFoundException(id);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        if(typeExerciceRepository.existsById(id)){
+            typeExerciceRepository.deleteById(id);
+        }else{
+            throw new TypeExerciceNotFoundException(id);
+        }
+    }
 }
