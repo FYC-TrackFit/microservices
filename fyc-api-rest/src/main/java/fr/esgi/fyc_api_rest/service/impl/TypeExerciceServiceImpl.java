@@ -39,12 +39,14 @@ public class TypeExerciceServiceImpl implements TypeExerciceService {
     }
 
     @Override
-    public TypeExercice update(Long id, TypeExercice typeExercice) {
-        if(typeExerciceRepository.existsById(id) && typeExercice.getId().equals(id)){
-            return typeExerciceRepository.save(typeExercice);
-        }else{
-            throw new TypeExerciceNotFoundException(id);
-        }
+    public TypeExercice update(Long id, TypeExercice typeExerciceUpdated) {
+        TypeExercice typeExercice = findById(id);
+        typeExercice.setLibelle(typeExerciceUpdated.getLibelle());
+        typeExercice.setObjectifCalorique(typeExerciceUpdated.getObjectifCalorique());
+        typeExercice.setObjectifDurre(typeExerciceUpdated.getObjectifDurre());
+        typeExercice.setRepetition(typeExerciceUpdated.getRepetition());
+        typeExercice.setCategorie(typeExerciceUpdated.getCategorie());
+        return typeExerciceRepository.save(typeExercice);
     }
 
     @Override
