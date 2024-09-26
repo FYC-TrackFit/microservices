@@ -1,8 +1,10 @@
 package fr.esgi.fyc_api_rest.initialisation;
 
 import fr.esgi.fyc_api_rest.business.CategorieExercice;
+import fr.esgi.fyc_api_rest.business.Sportif;
 import fr.esgi.fyc_api_rest.business.TypeExercice;
 import fr.esgi.fyc_api_rest.repository.CategorieExerciceRepository;
+import fr.esgi.fyc_api_rest.repository.SportifRepository;
 import fr.esgi.fyc_api_rest.repository.TypeExerciceRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,14 +17,17 @@ import java.util.List;
 public class AjoutDonneesInitiales implements CommandLineRunner {
     private final CategorieExerciceRepository categorieExerciceRepository;
     private final TypeExerciceRepository typeExerciceRepository;
-    public AjoutDonneesInitiales(CategorieExerciceRepository categorieExerciceRepository, TypeExerciceRepository typeExerciceRepository){
+    private final SportifRepository sportifRepository;
+    public AjoutDonneesInitiales(CategorieExerciceRepository categorieExerciceRepository, TypeExerciceRepository typeExerciceRepository, SportifRepository sportifRepository){
         this.categorieExerciceRepository = categorieExerciceRepository;
         this.typeExerciceRepository = typeExerciceRepository;
+        this.sportifRepository = sportifRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
         addCategoriesExerciceAndTypesExercice();
+        addSportifs();
     }
 
     private void addCategoriesExerciceAndTypesExercice() {
@@ -64,5 +69,10 @@ public class AjoutDonneesInitiales implements CommandLineRunner {
         tousLesExercices.addAll(exercicesEquilibre);
 
         tousLesExercices.forEach(typeExerciceRepository::save);
+    }
+
+    public void addSportifs(){
+        Sportif sportif = new Sportif("Peignet", "Robin");
+        sportifRepository.save(sportif);
     }
 }

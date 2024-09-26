@@ -16,6 +16,11 @@ public class Sportif {
     @JsonBackReference
     private List<Seance> seances;
 
+    public Sportif(String nom, String prenom) {
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+
     public Sportif(Long id, String nom, String prenom, List<Seance> seances) {
         this.id = id;
         this.nom = nom;

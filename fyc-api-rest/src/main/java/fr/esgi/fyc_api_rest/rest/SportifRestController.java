@@ -22,8 +22,8 @@ public class SportifRestController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Sportif create(@RequestBody SportifDTO sportifCreationDTO){
-        return sportifService.create(sportifMapper.toEntity(sportifCreationDTO));
+    public Sportif create(@RequestBody SportifDTO sportifDTO){
+        return sportifService.create(sportifMapper.toEntity(sportifDTO));
     }
 
     @GetMapping
