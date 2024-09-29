@@ -1,6 +1,7 @@
 package fr.esgi.fyc_api_rest.service.impl;
 
 import fr.esgi.fyc_api_rest.business.Sportif;
+import fr.esgi.fyc_api_rest.exception.sportif.SportifNotFoundException;
 import fr.esgi.fyc_api_rest.repository.SportifRepository;
 import fr.esgi.fyc_api_rest.service.SportifService;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class SportifServiceImpl implements SportifService {
         if(sportif.isPresent()){
             return sportif.get();
         }else{
-            throw new RuntimeException("");
+            throw new SportifNotFoundException(id);
         }
     }
 
@@ -46,6 +47,10 @@ public class SportifServiceImpl implements SportifService {
 
     @Override
     public void delete(Long id) {
-        sportifRepository.deleteById(id);
+        if(sportifRepository.existsById(id)){
+            sportifRepository.deleteById(id);
+        }else{
+            throw new SportifNotFoundException(id);
+        }
     }
 }

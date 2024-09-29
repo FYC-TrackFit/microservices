@@ -1,6 +1,7 @@
 package fr.esgi.fyc_api_rest.service.impl;
 
 import fr.esgi.fyc_api_rest.business.Seance;
+import fr.esgi.fyc_api_rest.exception.seance.SeanceNotFoundException;
 import fr.esgi.fyc_api_rest.repository.SeanceRepository;
 import fr.esgi.fyc_api_rest.service.SeanceService;
 import org.springframework.stereotype.Service;
@@ -32,7 +33,7 @@ public class SeanceServiceImpl implements SeanceService {
         if(seance.isPresent()){
             return seance.get();
         }else{
-            throw new RuntimeException("La seance n'existe pas");
+            throw new SeanceNotFoundException(id);
         }
     }
 
@@ -51,7 +52,7 @@ public class SeanceServiceImpl implements SeanceService {
         if(seanceRepository.existsById(id)){
             seanceRepository.deleteById(id);
         }else{
-            throw new RuntimeException("La seance n'existe pas");
+            throw new SeanceNotFoundException(id);
         }
     }
 }

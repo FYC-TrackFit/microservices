@@ -1,6 +1,7 @@
 package fr.esgi.fyc_api_rest.service.impl;
 
 import fr.esgi.fyc_api_rest.business.CategorieExercice;
+import fr.esgi.fyc_api_rest.exception.categorie.CategorieNotFoundException;
 import fr.esgi.fyc_api_rest.repository.CategorieExerciceRepository;
 import fr.esgi.fyc_api_rest.service.CategorieExerciceService;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class CategorieExerciceServiceImpl implements CategorieExerciceService {
         if(categorieExercice.isPresent()){
             return categorieExercice.get();
         }else{
-            throw new RuntimeException("");
+            throw new CategorieNotFoundException(id);
         }
     }
 }

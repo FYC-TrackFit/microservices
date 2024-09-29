@@ -1,8 +1,7 @@
 package fr.esgi.fyc_api_rest.mapper;
 
 import fr.esgi.fyc_api_rest.business.TypeExercice;
-import fr.esgi.fyc_api_rest.dto.typeExercice.in.TypeExerciceCreationDTO;
-import fr.esgi.fyc_api_rest.dto.typeExercice.in.TypeExerciceUpdateDTO;
+import fr.esgi.fyc_api_rest.dto.typeExercice.in.TypeExerciceDTO;
 import fr.esgi.fyc_api_rest.service.CategorieExerciceService;
 import fr.esgi.fyc_api_rest.service.TypeExerciceService;
 import org.mapstruct.Mapper;
@@ -17,7 +16,5 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface TypeExerciceMapper {
     @Mapping(target = "categorie", source = "idCategorie")
-    public TypeExercice toEntity(TypeExerciceCreationDTO typeExerciceCreationDTO);
-    @Mapping(target = "categorie", source = "idCategorie")
-    public TypeExercice toEntity(TypeExerciceUpdateDTO typeExerciceCreationDTO);
+    public TypeExercice toEntity(TypeExerciceDTO typeExerciceCreationDTO);
 }
