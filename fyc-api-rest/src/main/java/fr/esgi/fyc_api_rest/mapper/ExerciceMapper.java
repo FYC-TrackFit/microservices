@@ -1,9 +1,9 @@
 package fr.esgi.fyc_api_rest.mapper;
 
 import fr.esgi.fyc_api_rest.business.Exercice;
-import fr.esgi.fyc_api_rest.dto.exercice.in.ExerciceDTO;
+import fr.esgi.fyc_api_rest.dto.request.ExerciceRequestDTO;
+import fr.esgi.fyc_api_rest.dto.response.ExerciceResponseDTO;
 import fr.esgi.fyc_api_rest.service.SeanceService;
-import fr.esgi.fyc_api_rest.service.SportifService;
 import fr.esgi.fyc_api_rest.service.TypeExerciceService;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -18,5 +18,9 @@ import org.mapstruct.ReportingPolicy;
 public interface ExerciceMapper {
     @Mapping(target = "seance", source = "idSeance")
     @Mapping(target = "typeExercice", source = "idTypeExercice")
-    Exercice toEntity(ExerciceDTO exerciceDTO);
+    Exercice toEntity(ExerciceRequestDTO exerciceDTO);
+
+    @Mapping(target = "seanceResponse", source = "seance")
+    @Mapping(target = "typeExerciceResponse", source = "typeExercice")
+    ExerciceResponseDTO toResponseDTO(Exercice exercice);
 }

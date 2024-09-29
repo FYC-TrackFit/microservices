@@ -1,6 +1,6 @@
-package fr.esgi.fyc_api_rest.dto.exercice.in;
+package fr.esgi.fyc_api_rest.dto.request;
 
-public class ExerciceDTO {
+public class ExerciceRequestDTO {
     public String libelle;
     public int durreRealise;
     public int caloriePerdus;

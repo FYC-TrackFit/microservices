@@ -17,10 +17,8 @@ public class TypeExercice {
     private Integer repetition;
     @ManyToOne
     @JoinColumn(name = "categorie_exercice_id")
-    @JsonManagedReference
     private CategorieExercice categorie;
     @OneToMany(mappedBy = "typeExercice", cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<Exercice> exercices;
 
     public TypeExercice(String libelle, int objectifDurre, int objectifCalorique, Integer repetition, CategorieExercice categorie) {

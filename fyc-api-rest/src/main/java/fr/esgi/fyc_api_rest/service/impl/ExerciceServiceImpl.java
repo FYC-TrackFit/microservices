@@ -1,7 +1,6 @@
 package fr.esgi.fyc_api_rest.service.impl;
 
 import fr.esgi.fyc_api_rest.business.Exercice;
-import fr.esgi.fyc_api_rest.dto.exercice.in.ExerciceDTO;
 import fr.esgi.fyc_api_rest.exception.exercice.ExerciceNotFoundException;
 import fr.esgi.fyc_api_rest.repository.ExerciceRepository;
 import fr.esgi.fyc_api_rest.service.ExerciceService;

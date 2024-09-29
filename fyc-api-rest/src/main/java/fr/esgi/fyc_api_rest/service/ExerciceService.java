@@ -1,7 +1,6 @@
 package fr.esgi.fyc_api_rest.service;
 
 import fr.esgi.fyc_api_rest.business.Exercice;
-import fr.esgi.fyc_api_rest.dto.exercice.in.ExerciceDTO;
 
 import java.util.List;
 

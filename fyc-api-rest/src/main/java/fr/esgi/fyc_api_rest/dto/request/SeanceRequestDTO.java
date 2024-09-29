@@ -1,8 +1,8 @@
-package fr.esgi.fyc_api_rest.dto.seance.in;
+package fr.esgi.fyc_api_rest.dto.request;
 
 import java.util.Date;
 
-public class SeanceDTO {
+public class SeanceRequestDTO {
     public String libelle;
     public Date date;
     public int objectifCalorique;

@@ -1,6 +1,6 @@
-package fr.esgi.fyc_api_rest.dto.typeExercice.in;
+package fr.esgi.fyc_api_rest.dto.request;
 
-public class TypeExerciceDTO {
+public class TypeExerciceRequestDTO {
     public String libelle;
     public int objectifDurre;
     public int objectifCalorique;
