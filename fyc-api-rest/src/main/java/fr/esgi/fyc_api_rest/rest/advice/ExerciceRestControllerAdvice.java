@@ -1,7 +1,6 @@
 package fr.esgi.fyc_api_rest.rest.advice;
 
 import fr.esgi.fyc_api_rest.exception.exercice.ExerciceNotFoundException;
-import fr.esgi.fyc_api_rest.exception.seance.SeanceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
