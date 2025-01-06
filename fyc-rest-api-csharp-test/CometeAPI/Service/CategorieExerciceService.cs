@@ -13,6 +13,11 @@ public class CategorieExerciceService : ICategorieExerciceService
         this._categorieExerciceRepository = categorieExerciceRepository;
     }
 
+    public async Task<List<CategorieExercice>> findAll()
+    {
+        return await _categorieExerciceRepository.findAll();
+    }
+
     public async Task<CategorieExercice> findById(int id)
     {
         return await _categorieExerciceRepository.findById(id);

@@ -19,6 +19,11 @@ public class CategorieExerciceRepository
         return categorieExercice;
     }
 
+    public async Task<List<CategorieExercice>> findAll()
+    {
+        return _dbContext.CategorieExercices.ToList();
+    }
+
     public async Task<CategorieExercice> findById(int id)
     {
         CategorieExercice? categorieExercice = await _dbContext.CategorieExercices.FindAsync(id);

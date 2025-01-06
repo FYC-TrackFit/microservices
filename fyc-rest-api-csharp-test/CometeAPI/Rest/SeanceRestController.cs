@@ -9,7 +9,6 @@ namespace FycRestApi.Rest;
 
 [ApiController]
 [Route("api/Seances")]
-
 public class SeanceRestController : ControllerBase
 {
     private readonly ISeanceService _seanceService;

@@ -32,9 +32,9 @@ public class TypeExerciceRestController : ControllerBase
     {
         try
         {
-            TypeExercice sportif = await _typeExerciceService.save(await _typeExerciceMapper.toEntity(requestDTO));
-            string uri = Url.Action(action: nameof(FindById), new { id = sportif.id });
-            return Created(uri, sportif);
+            TypeExercice typeExercice = await _typeExerciceService.save(await _typeExerciceMapper.toEntity(requestDTO));
+            string uri = Url.Action(action: nameof(FindById), new { id = typeExercice.id });
+            return Created(uri, _typeExerciceMapper.toDTO(typeExercice));
         }
         catch (Exception ex)
         {
