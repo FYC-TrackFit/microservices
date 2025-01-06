@@ -11,8 +11,17 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseMySql("Server=localhost;Database=fyc;User=root;Password=fyc;",
-            new MySqlServerVersion(new Version(8, 0, 21))).EnableSensitiveDataLogging()
+        optionsBuilder.UseMySql("Server=mysql;Database=fyc;User=root;Password=fyc;",
+            new MySqlServerVersion(new Version(8, 0, 21)),
+            mysqlOptions =>
+            {
+                  mysqlOptions.EnableRetryOnFailure(
+                        maxRetryCount: 10, // Nombre maximum de tentatives
+                        maxRetryDelay: TimeSpan.FromSeconds(10), // Délai maximal entre les tentatives
+                        errorNumbersToAdd: null // Ajouter des codes d'erreur spécifiques si nécessaire
+                  );
+            })
+        .EnableSensitiveDataLogging()
         .LogTo(Console.WriteLine);
     }
 
