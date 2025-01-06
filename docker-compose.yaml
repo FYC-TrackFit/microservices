@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:latest # Utilisation de l'image MySQL
+    environment: # Variables d'environnement
+      MYSQL_ROOT_PASSWORD: fyc
+      MYSQL_DATABASE: fyc
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: fyc
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+  
+  restapi:
+    build:
+      context: ./fyc-rest-api-csharp-test/CometeAPI
+      dockerfile: Dockerfile
+    ports:
+      - 44318:80
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    depends_on:
+      - mysql
+  
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.0.7
+    ports:
+      - "8081:8081"
+    environment:
+      KC_HOSTNAME_PORT: 8081
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    command: ["start-dev", "--http-port", "8081"]
