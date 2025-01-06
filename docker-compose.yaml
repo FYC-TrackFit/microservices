@@ -3,6 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:latest # Utilisation de l'image MySQL
+    container_name: mysql
     environment: # Variables d'environnement
       MYSQL_ROOT_PASSWORD: fyc
       MYSQL_DATABASE: fyc
@@ -11,6 +12,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
@@ -24,6 +26,7 @@ services:
     build:
       context: ./fyc-rest-api-csharp-test/CometeAPI
       dockerfile: Dockerfile
+    container_name: restapi
     ports:
       - 44318:80
     environment:
@@ -33,6 +36,7 @@ services:
   
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.7
+    container_name: keycloak
     ports:
       - "8081:8081"
     environment:
