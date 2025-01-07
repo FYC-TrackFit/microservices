@@ -17,14 +17,14 @@ public class SportifService : ISportifService
         await _sportifRepository.Delete(id);
     }
 
-    public Task<List<Sportif>> FindAll()
+    public async Task<List<Sportif>> FindAll()
     {
-        return _sportifRepository.FindAll();
+        return await _sportifRepository.FindAll();
     }
 
-    public Task<Sportif> FindById(int id)
+    public async Task<Sportif> FindById(int id)
     {
-        return _sportifRepository.FindById(id);
+        return await _sportifRepository.FindById(id);
     }
 
     public async Task<Sportif> Save(Sportif sportif)
@@ -32,8 +32,8 @@ public class SportifService : ISportifService
         return await _sportifRepository.Save(sportif);
     }
 
-    public Task<Sportif> Update(int id, Sportif sportif)
+    public async Task<Sportif> Update(int id, Sportif sportifUpdated)
     {
-        return _sportifRepository.Update(id, sportif);
+        return await _sportifRepository.Update(id, sportifUpdated);
     }
 }
