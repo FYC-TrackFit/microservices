@@ -33,7 +33,7 @@ public class SportifRestController : ControllerBase
         try
         {
             Sportif sportif = await _sportifService.Save(_mapper.Map<Sportif>(requestDTO));
-            string uri = Url.Action(action: nameof(FindById), new {id = sportif.id});
+            string uri = Url.Action(action: nameof(FindById), new { id = sportif.id });
             return Created(uri, sportif);
         }
         catch (Exception ex) {
@@ -59,7 +59,7 @@ public class SportifRestController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult<SportifResponseDTO>> update(int id, [FromBody] SportifRequestDTO requestDTO)
+    public async Task<ActionResult<SportifResponseDTO>> Update(int id, [FromBody] SportifRequestDTO requestDTO)
     {
         try
         {
@@ -77,7 +77,7 @@ public class SportifRestController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
         try
         {
