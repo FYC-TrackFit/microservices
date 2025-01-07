@@ -14,26 +14,26 @@ public class SportifService : ISportifService
 
     public async Task delete(int id)
     {
-        await _sportifRepository.delete(id);
+        await _sportifRepository.Delete(id);
     }
 
     public Task<List<Sportif>> findAll()
     {
-        return _sportifRepository.findAll();
+        return _sportifRepository.FindAll();
     }
 
     public Task<Sportif> findById(int id)
     {
-        return _sportifRepository.findById(id);
+        return _sportifRepository.FindById(id);
     }
 
     public async Task<Sportif> save(Sportif sportif)
     {
-        return await _sportifRepository.save(sportif);
+        return await _sportifRepository.Save(sportif);
     }
 
     public Task<Sportif> update(int id, Sportif sportif)
     {
-        return _sportifRepository.update(id, sportif);
+        return _sportifRepository.Update(id, sportif);
     }
 }
