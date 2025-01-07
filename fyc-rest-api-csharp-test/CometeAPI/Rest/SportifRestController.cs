@@ -23,7 +23,7 @@ public class SportifRestController : ControllerBase
     [HttpGet("")]
     public async Task<ActionResult<List<SportifResponseDTO>>> Index()
     {
-        List<Sportif> sportifs = await this._sportifService.findAll();
+        List<Sportif> sportifs = await this._sportifService.FindAll();
         return Ok(_mapper.Map<List<SportifResponseDTO>>(sportifs));
     }
 
@@ -32,7 +32,7 @@ public class SportifRestController : ControllerBase
     {
         try
         {
-            Sportif sportif = await _sportifService.save(_mapper.Map<Sportif>(requestDTO));
+            Sportif sportif = await _sportifService.Save(_mapper.Map<Sportif>(requestDTO));
             string uri = Url.Action(action: nameof(FindById), new {id = sportif.id});
             return Created(uri, sportif);
         }
@@ -46,7 +46,7 @@ public class SportifRestController : ControllerBase
     {
         try
         {
-            Sportif sportif = await _sportifService.findById(id);
+            Sportif sportif = await _sportifService.FindById(id);
             return Ok(_mapper.Map<SportifResponseDTO>(sportif));
         }
         catch (KeyNotFoundException ex)
@@ -63,7 +63,7 @@ public class SportifRestController : ControllerBase
     {
         try
         {
-            Sportif sportif = await _sportifService.update(id, _mapper.Map<Sportif>(requestDTO));
+            Sportif sportif = await _sportifService.Update(id, _mapper.Map<Sportif>(requestDTO));
             return Ok(_mapper.Map<SportifResponseDTO>(sportif));
         }
         catch (KeyNotFoundException ex)
@@ -81,7 +81,7 @@ public class SportifRestController : ControllerBase
     {
         try
         {
-            await _sportifService.delete(id);
+            await _sportifService.Delete(id);
             return NoContent();
         }
         catch (KeyNotFoundException ex)

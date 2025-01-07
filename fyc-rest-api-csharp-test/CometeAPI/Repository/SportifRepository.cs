@@ -8,9 +8,9 @@ public class SportifRepository
 {
     private readonly ApplicationDbContext _dbContext;
 
-    public SportifRepository(ApplicationDbContext dbContext)
+    public SportifRepository(ApplicationDbContext context)
     {
-        this._dbContext = dbContext;
+        _dbContext = context;
     }
 
     public async Task<Sportif> Save(Sportif sportif)
@@ -23,7 +23,8 @@ public class SportifRepository
     public async Task<Sportif> FindById(int id)
     {
         Sportif? sportif = await _dbContext.Sportifs.FindAsync(id);
-        if (sportif != null) {
+        if(sportif != null)
+        {
             return sportif;
         }
         else

@@ -20,7 +20,7 @@ public class SeanceMapper
     public async Task<Seance> toEntity(SeanceRequestDTO requestDTO)
     {
         Seance seance = _mapper.Map<Seance>(requestDTO);
-        seance.sportif = await _sportifService.findById(requestDTO.idSportif);
+        seance.sportif = await _sportifService.FindById(requestDTO.idSportif);
         return seance;
     }
 

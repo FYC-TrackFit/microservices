@@ -4,9 +4,9 @@ namespace FycRestApi.Service.Interface;
 
 public interface ISportifService
 {
-    public Task<Sportif> save(Sportif tag);
-    public Task<Sportif> findById(int id);
-    public Task<List<Sportif>> findAll();
-    public Task<Sportif> update(int id, Sportif sportif);
-    public Task delete(int id);
+    public Task<Sportif> Save(Sportif tag);
+    public Task<Sportif> FindById(int id);
+    public Task<List<Sportif>> FindAll();
+    public Task<Sportif> Update(int id, Sportif sportif);
+    public Task Delete(int id);
 }
